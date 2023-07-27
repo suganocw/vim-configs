@@ -639,26 +639,6 @@ endfunction
 "
 " Bookmark
 "
-command! L8           call WebOpen("localhost:8000")
-command! Ins          call system(g:script_dir . "ins o")
-command! Ctags        call system("ctags -R .")
-command! Gmail        call WebOpen("mail.google.com/mail/u/1/?pli=1#inbox")
-command! Twitter      call WebOpen("twitter.com/tobasojyo")
-command! Twitternew   call WebOpen("twitter.com/compose/tweet")
-command! Securitynews call WebOpen("www.scmagazine.com/home/security-news/")
-command! Hackernews   call WebOpen("news.ycombinator.com")
-command! Atmarkit     call WebOpen("www.atmarkit.co.jp/ait/subtop/features/special/")
-command! Task         call WebOpen("calendar.google.com/calendar/b/1/r")
-command! Youtube      call WebOpen("youtube.com")
-command! Netflix      call WebOpen("www.netflix.com/browse") 
-command! Sugawiki     call WebOpen("bitbucket.org/keisugano/personal-wiki/src/master/") 
-command! Bible        call WebOpen("www.chinesebibleonline.com") 
-command! Hub          call WebOpen("employment.en-japan.com/engineerhub/")
-command! Forbes       call WebOpen("www.forbes.com")
-command! File         call File()
-command! Xxd          call Xxd()
-command! Url          call Url()
-:command! -nargs=? Baidu :call Baidu(<f-args>)
 command! Lf :%s/,/,\r/g
 
 :command! -nargs=0 Xxd :call Xxd()
@@ -697,14 +677,6 @@ function! Url()
     let line=getline('.')
     let result = system("open " . getline('.'))
     echo result
-endfunction
-
-function! Baidu(...)
-    let alphaquery = ""
-    if a:0 >= 1
-        let alphaquery = "+" . substitute(a:1, ' ', '%20', "g")
-    endif
-    let result = system("open https://www.baidu.com/s?wd=" . expand("<cword>") . alphaquery)
 endfunction
 
 :command! -nargs=? Ww :call LookFree(<f-args>)
